@@ -1,0 +1,3194 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کلاس یار - پلتفرم هوشمند آموزشی نجف آباد</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Kelassyar Exact Colors from website */
+            --primary-purple: #6366f1;
+            --dark-purple: #4f46e5;
+            --light-purple: #eef2ff;
+            --accent-orange: #f97316;
+            --dark-orange: #ea580c;
+            --light-orange: #fff7ed;
+            
+            /* Neutral Colors */
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #f1f5f9;
+            --white: #ffffff;
+            
+            /* Gradients */
+            --gradient-purple: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --gradient-orange: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            --gradient-mixed: linear-gradient(135deg, #6366f1 0%, #f97316 100%);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(249, 115, 22, 0.03) 100%);
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.08;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-purple);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-orange);
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+            animation-delay: 3s;
+        }
+
+        .shape:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-mixed);
+            border-radius: 41% 59% 41% 59% / 41% 59% 41% 59%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(90deg); }
+            50% { transform: translate(-20px, 20px) rotate(180deg); }
+            75% { transform: translate(40px, 10px) rotate(270deg); }
+        }
+
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--light-purple);
+            border-top: 4px solid var(--primary-purple);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gradient-purple);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.3s;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-purple);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-purple);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-purple);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--gradient-orange);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-purple);
+            border: 2px solid var(--primary-purple);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-purple);
+            color: white;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-purple);
+        }
+
+        .btn-white:hover {
+            background: var(--light-purple);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary-purple);
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: var(--shadow-lg);
+            padding: 2rem;
+            transition: right 0.3s ease;
+            z-index: 9999;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav-links a {
+            display: block;
+            padding: 1rem;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            background: var(--light-purple);
+            color: var(--primary-purple);
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0 3rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(249, 115, 22, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .highlight {
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-illustration {
+            width: 100%;
+            height: 450px;
+            background: var(--gradient-purple);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-illustration::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .illustration-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .illustration-icon {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            animation: floatCard 3s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .floating-card-1 {
+            top: 10%;
+            right: -8%;
+            animation-delay: 0s;
+        }
+
+        .floating-card-2 {
+            bottom: 15%;
+            left: -8%;
+            animation-delay: 1s;
+        }
+
+        .floating-card-3 {
+            top: 50%;
+            right: -12%;
+            animation-delay: 2s;
+        }
+
+        .floating-card i {
+            font-size: 1.8rem;
+            color: var(--primary-purple);
+        }
+
+        .floating-card-content h4 {
+            font-size: 0.95rem;
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .floating-card-content p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 2rem;
+            margin-top: -2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 60%;
+            background: var(--light-gray);
+        }
+
+        .stat-item:first-child::after {
+            display: none;
+        }
+
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1rem;
+            background: var(--gradient-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover .stat-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: var(--light-purple);
+            color: var(--primary-purple);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        /* Swiper Container */
+        .swiper-container {
+            width: 100%;
+            padding: 1rem 0 3rem;
+        }
+
+        /* Best Institutes Section */
+        .best-institutes {
+            background: var(--light-gray);
+        }
+
+        .institute-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            height: auto;
+        }
+
+        .institute-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .institute-image {
+            width: 100%;
+            height: 180px;
+            background: var(--gradient-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .institute-badge {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            background: var(--gradient-orange);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .institute-icon {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .institute-content {
+            padding: 1.2rem;
+        }
+
+        .institute-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .institute-location {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--gray);
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .institute-location i {
+            color: var(--primary-purple);
+        }
+
+        .institute-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem 0;
+            border-top: 1px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .institute-stat {
+            text-align: center;
+        }
+
+        .institute-stat-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary-purple);
+            display: block;
+        }
+
+        .institute-stat-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+
+        .institute-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .institute-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .stars {
+            color: var(--accent-orange);
+            font-size: 1rem;
+        }
+
+        .rating-number {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        /* Best Classes Section - Smaller Cards */
+        .best-classes {
+            background: white;
+        }
+
+        .class-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            height: auto;
+        }
+
+        .class-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-purple);
+        }
+
+        .class-image {
+            width: 100%;
+            height: 160px;
+            background: var(--gradient-mixed);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .class-badge {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-purple);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .class-badge.special {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .class-icon {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .class-content {
+            padding: 1.2rem;
+        }
+
+        .class-category {
+            display: inline-block;
+            padding: 0.25rem 0.7rem;
+            background: var(--light-purple);
+            color: var(--primary-purple);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .class-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .class-content h3 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+        }
+
+        .class-content p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        .class-meta {
+            display: flex;
+            gap: 1rem;
+            padding: 0.8rem 0;
+            border-top: 1px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
+            margin-bottom: 1rem;
+        }
+
+        .class-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        .class-meta-item i {
+            color: var(--primary-purple);
+            font-size: 0.85rem;
+        }
+
+        .class-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .class-price {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary-purple);
+        }
+
+        .class-price small {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .class-btn {
+            padding: 0.6rem 1.2rem;
+            background: var(--gradient-purple);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+        }
+
+        .class-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Swiper Pagination */
+        .swiper-pagination-bullet {
+            background: var(--primary-purple);
+            opacity: 0.3;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: var(--primary-purple);
+        }
+
+        /* Swiper Navigation */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--primary-purple);
+            background: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-md);
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 1.2rem;
+        }
+
+        /* Features Section */
+        .features {
+            background: var(--light-gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-purple);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light-purple);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary-purple);
+            margin-bottom: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: var(--gradient-purple);
+            color: white;
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Categories Section */
+        .categories {
+            background: white;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-purple);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .category-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .category-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-purple);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;margin: 0 auto 1.2rem;
+            background: var(--light-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-card:hover .category-icon {
+            background: var(--gradient-purple);
+            transform: scale(1.1);
+        }
+
+        .category-card:hover .category-icon i {
+            color: white;
+        }
+
+        .category-icon i {
+            color: var(--primary-purple);
+            transition: color 0.3s ease;
+        }
+
+        .category-card h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 0.4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-count {
+            color: var(--primary-purple);
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--light-gray);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+            height: auto;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -0.8rem;
+            right: 1.2rem;
+            font-size: 6rem;
+            color: var(--light-purple);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-text {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            color: var(--dark);
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        /* Team Section */
+        .team {
+            background: white;
+        }
+
+        .team-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .team-image {
+            position: relative;
+        }
+
+        .team-illustration {
+            width: 100%;
+            height: 380px;
+            background: var(--gradient-mixed);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-illustration::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .team-icon {
+            font-size: 7rem;
+            color: white;
+            z-index: 1;
+        }
+
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-stat {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 14px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-stat:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .team-stat-icon {
+            font-size: 1.8rem;
+            color: var(--primary-purple);
+            margin-bottom: 0.4rem;
+        }
+
+        .team-stat-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-purple);
+        }
+
+        .team-stat-label {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .team-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: var(--dark);
+        }
+
+        .team-text p {
+            color: var(--gray);
+            line-height: 1.9;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        .team-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-feature {
+            padding: 0.8rem;
+            background: var(--light-purple);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .team-feature i {
+            color: var(--primary-purple);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--gradient-purple);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3.5rem 2rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-purple);
+        }
+
+        .footer-brand p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .social-link {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-purple);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-purple);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-purple);
+            padding-right: 0.4rem;
+        }
+
+        .footer-contact {
+            list-style: none;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-contact i {
+            color: var(--primary-purple);
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            padding-top: 1.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--gray);
+        }
+
+        .team-credits {
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-purple);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            padding: 1rem 1.3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transform: translateX(400px);
+            transition: transform 0.3s;
+            z-index: 9999;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--gradient-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .toast-content h4 {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .toast-content p {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content,
+            .team-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-illustration {
+                height: 350px;
+            }
+
+            .team-illustration {
+                height: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .hero {
+                padding: 3.5rem 1rem 2.5rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .hero-illustration {
+                height: 280px;
+            }
+
+            .illustration-icon {
+                font-size: 5rem;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.8rem;
+                padding: 2rem;
+            }
+
+            .stat-item::after {
+                display: none;
+            }
+
+            .stat-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .features-grid,
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 3.5rem 1.2rem;
+            }
+
+            .team-stats,
+            .team-features {
+                grid-template-columns: 1fr;
+            }
+
+            .team-illustration {
+                height: 280px;
+            }
+
+            .team-icon {
+                font-size: 5rem;
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Floating Shapes -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="logo-text">کلاس یار</span>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">خانه</a></li>
+                    <li><a href="#institutes">بهترین آموزشگاه‌ها</a></li>
+                    <li><a href="#classes">بهترین کلاس‌ها</a></li>
+                    <li><a href="#features">ویژگی‌ها</a></li>
+                    <li><a href="#categories">دسته‌بندی</a></li>
+                    <li><a href="#testimonials">نظرات</a></li>
+                </ul>
+
+                <div class="nav-cta">
+                    <a href="#" class="btn btn-outline">ورود</a>
+                    <a href="#" class="btn btn-primary">ثبت‌نام</a>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="logo-text">کلاس یار</span>
+            </div>
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <ul class="mobile-nav-links">
+            <li><a href="#home">خانه</a></li>
+            <li><a href="#institutes">بهترین آموزشگاه‌ها</a></li>
+            <li><a href="#classes">بهترین کلاس‌ها</a></li>
+            <li><a href="#features">ویژگی‌ها</a></li>
+            <li><a href="#categories">دسته‌بندی</a></li>
+            <li><a href="#testimonials">نظرات</a></li>
+        </ul>
+
+        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+            <a href="#" class="btn btn-outline" style="text-align: center;">ورود</a>
+            <a href="#" class="btn btn-primary" style="text-align: center;">ثبت‌نام</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-up">
+                    <h1>
+                        پیدا کن <span class="highlight">بهترین کلاس‌ها</span> در شهرت
+                    </h1>
+                    <p>
+                        کلاس یار پلتفرمی هوشمند برای جستجو، مقایسه و ثبت‌نام آنلاین انواع کلاس‌های آموزشی، زبان، برنامه‌نویسی، موسیقی و هنر در نجف آباد
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#classes" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                            جستجوی کلاس
+                        </a>
+                        <a href="#institutes" class="btn btn-secondary">
+                            <i class="fas fa-school"></i>
+                            آموزشگاه‌ها
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
+                    <div class="hero-illustration">
+                        <div class="illustration-content">
+                            <div class="illustration-icon">🎓</div>
+                            <h3>بیش از 1000 دانش‌آموز راضی</h3>
+                        </div>
+                    </div>
+
+                    <div class="floating-card floating-card-1" data-aos="fade-down" data-aos-delay="400">
+                        <i class="fas fa-users"></i>
+                        <div class="floating-card-content">
+                            <h4>1000+</h4>
+                            <p>دانش‌آموز فعال</p>
+                        </div>
+                    </div>
+
+                    <div class="floating-card floating-card-2" data-aos="fade-up" data-aos-delay="600">
+                        <i class="fas fa-star"></i>
+                        <div class="floating-card-content">
+                            <h4>4.9/5</h4>
+                            <p>امتیاز کاربران</p>
+                        </div>
+                    </div>
+
+                    <div class="floating-card floating-card-3" data-aos="fade-left" data-aos-delay="800">
+                        <i class="fas fa-book"></i>
+                        <div class="floating-card-content">
+                            <h4>200+</h4>
+                            <p>کلاس فعال</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container" data-aos="fade-up">
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
+                <div class="stat-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="stat-number" data-target="188">0</div>
+                <div class="stat-label">کلاس فعال</div>
+            </div>
+
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                <div class="stat-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div class="stat-number" data-target="45">0</div>
+                <div class="stat-label">آموزشگاه</div>
+            </div>
+
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number" data-target="1000">0</div>
+                <div class="stat-label">دانش‌آموز فعال</div>
+            </div>
+
+            <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="stat-icon">
+                    <i class="fas fa-smile"></i>
+                </div>
+                <div class="stat-number" data-target="98">0</div>
+                <div class="stat-label">رضایت مشتری (%)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Institutes Section with Swiper -->
+    <section class="best-institutes" id="institutes">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">برترین آموزشگاه‌ها</span>
+                <h2>بهترین آموزشگاه‌های نجف آباد</h2>
+                <p>آموزشگاه‌های برتر با بالاترین کیفیت آموزش و امکانات</p>
+            </div>
+
+            <div class="swiper-container institutes-swiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <!-- Institute 1 -->
+                    <div class="swiper-slide">
+                        <div class="institute-card">
+                            <div class="institute-image" style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+                                <span class="institute-icon">🏫</span>
+                                <span class="institute-badge">برتر</span>
+                            </div>
+                            <div class="institute-content">
+                                <h3 class="institute-name">آموزشگاه زبان پارسیان</h3>
+                                <div class="institute-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>نجف آباد، خیابان امام</span>
+                                </div>
+                                <div class="institute-stats">
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">25</span>
+                                        <span class="institute-stat-label">کلاس</span>
+                                    </div>
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">350</span>
+                                        <span class="institute-stat-label">دانش‌آموز</span>
+                                    </div>
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">15</span>
+                                        <span class="institute-stat-label">مدرس</span>
+                                    </div>
+                                </div>
+                                <div class="institute-footer">
+                                    <div class="institute-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span class="rating-number">4.9</span>
+                                    </div>
+                                    <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">مشاهده</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Institute 2 -->
+                    <div class="swiper-slide">
+                        <div class="institute-card">
+                            <div class="institute-image" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+                                <span class="institute-icon">💻</span>
+                                <span class="institute-badge">محبوب</span>
+                            </div>
+                            <div class="institute-content">
+                                <h3 class="institute-name">آموزشگاه برنامه‌نویسی کدنویسان</h3>
+                                <div class="institute-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>نجف آباد، میدان انقلاب</span>
+                                </div>
+                                <div class="institute-stats">
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">18</span>
+                                        <span class="institute-stat-label">کلاس</span>
+                                    </div>
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">280</span>
+                                        <span class="institute-stat-label">دانش‌آموز</span>
+                                    </div>
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">12</span>
+                                        <span class="institute-stat-label">مدرس</span>
+                                    </div>
+                                </div>
+                                <div class="institute-footer">
+                                    <div class="institute-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span class="rating-number">4.8</span>
+                                    </div>
+                                    <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">مشاهده</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Institute 3 -->
+                    <div class="swiper-slide">
+                        <div class="institute-card">
+                            <div class="institute-image" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                                <span class="institute-icon">🎵</span>
+                                <span class="institute-badge">جدید</span>
+                            </div>
+                            <div class="institute-content">
+                                <h3 class="institute-name">آموزشگاه موسیقی نواندیشان</h3>
+                                <div class="institute-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>نجف آباد، خیابان بهشتی</span>
+                                </div>
+                                <div class="institute-stats">
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">20</span>
+                                        <span class="institute-stat-label">کلاس</span>
+                                    </div>
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">200</span>
+                                        <span class="institute-stat-label">دانش‌آموز</span>
+                                    </div>
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">10</span>
+                                        <span class="institute-stat-label">مدرس</span>
+                                    </div>
+                                </div>
+                                <div class="institute-footer">
+                                    <div class="institute-rating">
+                                        <span class="stars">★★★★☆</span>
+                                        <span class="rating-number">4.7</span>
+                                    </div>
+                                    <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">مشاهده</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Institute 4 -->
+                    <div class="swiper-slide">
+                        <div class="institute-card">
+                            <div class="institute-image" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                                <span class="institute-icon">🎨</span><span class="institute-badge">پیشنهاد</span>
+                            </div>
+                            <div class="institute-content">
+                                <h3 class="institute-name">آموزشگاه هنر و طراحی آرتینو</h3>
+                                <div class="institute-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>نجف آباد، خیابان مطهری</span>
+                                </div>
+                                <div class="institute-stats">
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">15</span>
+                                        <span class="institute-stat-label">کلاس</span>
+                                    </div>
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">180</span>
+                                        <span class="institute-stat-label">دانش‌آموز</span>
+                                    </div>
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">8</span>
+                                        <span class="institute-stat-label">مدرس</span>
+                                    </div>
+                                </div>
+                                <div class="institute-footer">
+                                    <div class="institute-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span class="rating-number">4.9</span>
+                                    </div>
+                                    <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">مشاهده</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Institute 5 -->
+                    <div class="swiper-slide">
+                        <div class="institute-card">
+                            <div class="institute-image" style="background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);">
+                                <span class="institute-icon">⚽</span>
+                                <span class="institute-badge">ویژه</span>
+                            </div>
+                            <div class="institute-content">
+                                <h3 class="institute-name">باشگاه ورزشی چمپیون</h3>
+                                <div class="institute-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>نجف آباد، میدان آزادی</span>
+                                </div>
+                                <div class="institute-stats">
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">12</span>
+                                        <span class="institute-stat-label">کلاس</span>
+                                    </div>
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">220</span>
+                                        <span class="institute-stat-label">دانش‌آموز</span>
+                                    </div>
+                                    <div class="institute-stat">
+                                        <span class="institute-stat-value">9</span>
+                                        <span class="institute-stat-label">مدرس</span>
+                                    </div>
+                                </div>
+                                <div class="institute-footer">
+                                    <div class="institute-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span class="rating-number">4.8</span>
+                                    </div>
+                                    <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">مشاهده</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2.5rem;" data-aos="fade-up">
+                <a href="#" class="btn btn-primary" style="font-size: 1rem; padding: 0.9rem 2.5rem;">
+                    <i class="fas fa-school"></i>
+                    مشاهده همه آموزشگاه‌ها
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Classes Section with Swiper -->
+    <section class="best-classes" id="classes">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">برترین کلاس‌ها</span>
+                <h2>محبوب‌ترین کلاس‌های آموزشی</h2>
+                <p>بهترین کلاس‌ها با بالاترین کیفیت و رضایت دانش‌آموزان</p>
+            </div>
+
+            <div class="swiper-container classes-swiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <!-- Class 1 -->
+                    <div class="swiper-slide">
+                        <div class="class-card">
+                            <div class="class-image" style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">
+                                <span class="class-icon">🇬🇧</span>
+                                <span class="class-badge special">ویژه</span>
+                            </div>
+                            <div class="class-content">
+                                <span class="class-category">زبان انگلیسی</span>
+                                <div class="class-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-number">4.9</span>
+                                </div>
+                                <h3>مکالمه انگلیسی پیشرفته</h3>
+                                <p>آموزش مکالمه با اساتید مجرب بین‌المللی</p>
+                                <div class="class-meta">
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>3 ماه</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>12 نفر</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-signal"></i>
+                                        <span>متوسط</span>
+                                    </div>
+                                </div>
+                                <div class="class-footer">
+                                    <div class="class-price">
+                                        980,000 <small>تومان</small>
+                                    </div>
+                                    <button class="class-btn">مشاهده</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class 2 -->
+                    <div class="swiper-slide">
+                        <div class="class-card">
+                            <div class="class-image" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
+                                <span class="class-icon">🐍</span>
+                                <span class="class-badge">جدید</span>
+                            </div>
+                            <div class="class-content">
+                                <span class="class-category">برنامه‌نویسی</span>
+                                <div class="class-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-number">5.0</span>
+                                </div>
+                                <h3>پایتون از صفر تا صد</h3>
+                                <p>یادگیری پایتون با پروژه‌های واقعی</p>
+                                <div class="class-meta">
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>4 ماه</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>10 نفر</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-signal"></i>
+                                        <span>مبتدی</span>
+                                    </div>
+                                </div>
+                                <div class="class-footer">
+                                    <div class="class-price">
+                                        1,500,000 <small>تومان</small>
+                                    </div>
+                                    <button class="class-btn">مشاهده</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class 3 -->
+                    <div class="swiper-slide">
+                        <div class="class-card">
+                            <div class="class-image" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                                <span class="class-icon">🎸</span>
+                                <span class="class-badge">محبوب</span>
+                            </div>
+                            <div class="class-content">
+                                <span class="class-category">موسیقی</span>
+                                <div class="class-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-number">4.8</span>
+                                </div>
+                                <h3>گیتار کلاسیک و پاپ</h3>
+                                <p>یادگیری گیتار از پایه با اساتید برتر</p>
+                                <div class="class-meta">
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>6 ماه</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>8 نفر</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-signal"></i>
+                                        <span>مبتدی</span>
+                                    </div>
+                                </div>
+                                <div class="class-footer">
+                                    <div class="class-price">
+                                        1,200,000 <small>تومان</small>
+                                    </div>
+                                    <button class="class-btn">مشاهده</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class 4 -->
+                    <div class="swiper-slide">
+                        <div class="class-card">
+                            <div class="class-image" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);">
+                                <span class="class-icon">📝</span>
+                                <span class="class-badge special">تضمینی</span>
+                            </div>
+                            <div class="class-content">
+                                <span class="class-category">آزمون بین‌المللی</span>
+                                <div class="class-rating">
+                                    <span class="stars">★★★★☆</span>
+                                    <span class="rating-number">4.7</span>
+                                </div>
+                                <h3>دوره جامع IELTS</h3>
+                                <p>آمادگی کامل برای آزمون آیلتس</p>
+                                <div class="class-meta">
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>2 ماه</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>15 نفر</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-signal"></i>
+                                        <span>پیشرفته</span>
+                                    </div>
+                                </div>
+                                <div class="class-footer">
+                                    <div class="class-price">
+                                        2,500,000 <small>تومان</small>
+                                    </div>
+                                    <button class="class-btn">مشاهده</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class 5 -->
+                    <div class="swiper-slide">
+                        <div class="class-card">
+                            <div class="class-image" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                                <span class="class-icon">🎨</span>
+                                <span class="class-badge">پیشنهاد</span>
+                            </div>
+                            <div class="class-content">
+                                <span class="class-category">طراحی UI/UX</span>
+                                <div class="class-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-number">4.9</span>
+                                </div>
+                                <h3>طراحی رابط کاربری</h3>
+                                <p>آموزش UI/UX با ابزارهای مدرن</p>
+                                <div class="class-meta">
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>5 ماه</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>12 نفر</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-signal"></i>
+                                        <span>متوسط</span>
+                                    </div>
+                                </div>
+                                <div class="class-footer">
+                                    <div class="class-price">
+                                        1,800,000 <small>تومان</small>
+                                    </div>
+                                    <button class="class-btn">مشاهده</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class 6 -->
+                    <div class="swiper-slide">
+                        <div class="class-card">
+                            <div class="class-image" style="background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);">
+                                <span class="class-icon">💪</span>
+                                <span class="class-badge">جدید</span>
+                            </div>
+                            <div class="class-content">
+                                <span class="class-category">ورزش و تناسب اندام</span>
+                                <div class="class-rating">
+                                    <span class="stars">★★★★★</span>
+                                    <span class="rating-number">4.8</span>
+                                </div>
+                                <h3>بدنسازی و فیتنس</h3>
+                                <p>برنامه تمرینی تخصصی با مربی حرفه‌ای</p>
+                                <div class="class-meta">
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>3 ماه</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>20 نفر</span>
+                                    </div>
+                                    <div class="class-meta-item">
+                                        <i class="fas fa-signal"></i>
+                                        <span>همه سطوح</span>
+                                    </div>
+                                </div>
+                                <div class="class-footer">
+                                    <div class="class-price">
+                                        850,000 <small>تومان</small>
+                                    </div>
+                                    <button class="class-btn">مشاهده</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2.5rem;" data-aos="fade-up">
+                <a href="#" class="btn btn-primary" style="font-size: 1rem; padding: 0.9rem 2.5rem;">
+                    <i class="fas fa-th"></i>
+                    مشاهده همه کلاس‌ها
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">چرا کلاس یار؟</span>
+                <h2>امکانات و ویژگی‌های منحصر به فرد ما</h2>
+                <p>تجربه‌ای متفاوت در یادگیری با امکانات پیشرفته</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>جستجوی هوشمند</h3>
+                    <p>با سیستم جستجوی پیشرفته ما، پیدا کردن کلاس مورد نظر تنها در چند ثانیه امکان‌پذیر است</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>مقایسه آسان</h3>
+                    <p>امکان مقایسه قیمت، کیفیت، نظرات و امکانات کلاس‌های مختلف در یک نگاه</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h3>ثبت‌نام آنلاین</h3>
+                    <p>پرداخت آنلاین و رزرو سریع جایگاه شما با امنیت بالا و چند کلیک ساده</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>نظرات واقعی</h3>
+                    <p>دسترسی به نظرات و تجربیات واقعی دانش‌آموزان قبلی برای انتخاب بهتر</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>پشتیبانی 24/7</h3>
+                    <p>تیم پشتیبانی ما همیشه آماده پاسخگویی به سوالات و رفع مشکلات شماست</p>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>تخفیف‌های ویژه</h3>
+                    <p>دسترسی به تخفیف‌ها و پیشنهادات ویژه آموزشگاه‌ها فقط در کلاس یار</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">دسته‌بندی کلاس‌ها</span>
+                <h2>انتخاب از میان صدها کلاس در دسته‌های مختلف</h2>
+                <p>هر چیزی که برای یادگیری نیاز دارید، اینجا پیدا می‌کنید</p>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="category-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>زبان‌های خارجی</h3>
+                    <p class="category-count">45 کلاس</p>
+                </div>
+
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="category-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>برنامه‌نویسی</h3>
+                    <p class="category-count">38 کلاس</p>
+                </div>
+
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="category-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>موسیقی</h3>
+                    <p class="category-count">32 کلاس</p>
+                </div>
+
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="category-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>هنر و طراحی</h3>
+                    <p class="category-count">28 کلاس</p>
+                </div>
+
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="category-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>ورزش</h3>
+                    <p class="category-count">25 کلاس</p>
+                </div>
+
+                <div class="category-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="category-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>آمادگی آزمون</h3>
+                    <p class="category-count">20 کلاس</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section with Swiper -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">نظرات دانش‌آموزان</span>
+                <h2>تجربه کسانی که از کلاس یار استفاده کرده‌اند</h2>
+                <p>رضایت شما، افتخار ماست</p>
+            </div>
+
+            <div class="swiper-container testimonials-swiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    "از کلاس یار بهترین کلاس زبان نجف آباد رو پیدا کردم. مقایسه و ثبت‌نام آنلاین خیلی راحت بود و خیلی وقتم رو صرفه‌جویی کرد!"
+                                </p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">س</div>
+                                    <div class="author-info">
+                                        <h4>سارا احمدی</h4>
+                                        <p>دانشجوی زبان انگلیسی</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    "دوره پایتون رو از اینجا پیدا کردم. سیستم جستجو و فیلترینگ فوق‌العاده است و نظرات دانش‌آموزان قبلی خیلی کمک کرد."
+                                </p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">ا</div>
+                                    <div class="author-info">
+                                        <h4>امیر رضایی</h4>
+                                        <p>دانشجوی برنامه‌نویسی</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    "کلاس گیتار عالی پیدا کردم. نظرات دانش‌آموزان قبلی خیلی کمک کرد تا بهترین انتخاب رو داشته باشم. سایت حرفه‌ای و کاربردیه!"
+                                </p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">م</div>
+                                    <div class="author-info">
+                                        <h4>مریم کریمی</h4>
+                                        <p>دانشجوی موسیقی</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">
+                                    "کلاس یار کار رو خیلی راحت کرده. دیگه نیازی نیست ساعت‌ها دنبال آموزشگاه بگردم. همه چی تو یه جا هست!"
+                                </p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">ع</div>
+                                    <div class="author-info">
+                                        <h4>علی محمدی</h4>
+                                        <p>دانشجوی طراحی</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">تیم ما</span>
+                <h2>حضور دانش‌آموزان در نمایشگاه</h2>
+                <p>معرفی تیم سازنده کلاس یار</p>
+            </div>
+
+            <div class="team-content">
+                <div class="team-image" data-aos="fade-right">
+                    <div class="team-illustration">
+                        <div class="team-icon">👥</div>
+                    </div>
+                    <div class="team-stats">
+                        <div class="team-stat">
+                            <div class="team-stat-icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <div class="team-stat-value">8</div>
+                            <div class="team-stat-label">تیم نفره</div>
+                        </div>
+                        <div class="team-stat">
+                            <div class="team-stat-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="team-stat-value">100%</div>
+                            <div class="team-stat-label">خلاقیت</div>
+                        </div>
+                        <div class="team-stat">
+                            <div class="team-stat-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="team-stat-value">1</div>
+                            <div class="team-stat-label">پلتفرم هوشمند</div></div>
+                        <div class="team-stat">
+                            <div class="team-stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="team-stat-value">100%</div>
+                            <div class="team-stat-label">موفقیت</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-text" data-aos="fade-left">
+                    <h3>غرفه اختصاصی کلاس یار</h3>
+                    <p>
+                        تیم متشکل از <strong>حسین لطف‌الله‌پور، محمد اشرفی، شروین محمودیان، مهرداد امینی، متین منهنی، علی جوزی، مهدی هادیان و پوریا هاشمی</strong> در نمایشگاه، وب‌سایت Kelassyar.ir را معرفی کردند.
+                    </p>
+                    <p>
+                        این پلتفرم برای جستجو، مقایسه و ثبت‌نام آنلاین کلاس‌های آموزشی در نجف‌آباد و استان اصفهان طراحی شده است. در غرفه، عملکرد واقعی وب‌سایت بر روی نمایشگرها اجرا شد و شرکت‌کنندگان تجربه‌ای مستقیم از رابط کاربری داشتند.
+                    </p>
+                    <div class="team-features">
+                        <div class="team-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>پلتفرم هوشمند</span>
+                        </div>
+                        <div class="team-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>جستجو و ثبت‌نام</span>
+                        </div>
+                        <div class="team-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>تیم 8 نفره</span>
+                        </div>
+                        <div class="team-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>حضور موفق</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content" data-aos="zoom-in">
+                <h2>آماده شروع یادگیری هستید؟</h2>
+                <p>همین الان به جمع دانش‌آموزان راضی بپیوندید و بهترین کلاس را پیدا کنید</p>
+                <div class="cta-buttons">
+                    <a href="#classes" class="btn btn-white">
+                        <i class="fas fa-rocket"></i>
+                        شروع کنید
+                    </a>
+                    <a href="#contact" class="btn btn-outline" style="border-color: white; color: white;">
+                        <i class="fas fa-phone"></i>
+                        تماس با ما
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>کلاس یار</h3>
+                    <p>کلاس یار پلتفرم جامع جستجو و ثبت‌نام کلاس‌های آموزشی در نجف آباد است که توسط تیمی از دانش‌آموزان خلاق طراحی شده است.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>دسترسی سریع</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-left"></i> خانه</a></li>
+                        <li><a href="#institutes"><i class="fas fa-chevron-left"></i> آموزشگاه‌ها</a></li>
+                        <li><a href="#classes"><i class="fas fa-chevron-left"></i> کلاس‌ها</a></li>
+                        <li><a href="#features"><i class="fas fa-chevron-left"></i> ویژگی‌ها</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-chevron-left"></i> نظرات</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>دسته‌بندی‌ها</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> زبان‌های خارجی</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> برنامه‌نویسی</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> موسیقی</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> هنر و طراحی</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> ورزش</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>تماس با ما</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>031-42345678</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@kelassyar.ir</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>نجف آباد، اصفهان، ایران</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-globe"></i>
+                            <span>www.kelassyar.ir</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 کلاس یار | تمامی حقوق محفوظ است</p>
+                <p class="team-credits">
+                    <strong>تیم توسعه:</strong> حسین لطف‌الله‌پور، محمد اشرفی، شروین محمودیان، مهرداد امینی، متین منهنی، علی جوزی، مهدی هادیان، پوریا هاشمی
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="toast-content">
+            <h4>موفقیت!</h4>
+            <p>عملیات با موفقیت انجام شد</p>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-in-out'
+        });
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Progress Bar on Scroll
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+
+            // Show/Hide Scroll to Top Button
+            const scrollTopBtn = document.getElementById('scrollTop');
+            if (winScroll > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+
+            // Header Shadow on Scroll
+            const header = document.getElementById('header');
+            if (winScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll to Top
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth Scroll for Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    closeMobileMenu();
+                }
+            });
+        });
+
+        // Counter Animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(function() {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Intersection Observer for Stats
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-number[data-target]');
+                    counters.forEach(counter => {
+                        animateCounter(counter);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Mobile Menu Functions
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+        }
+
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', closeMobileMenu);
+        }
+
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener('click', closeMobileMenu);
+        }
+
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Initialize Swiper for Institutes
+        const institutesSwiper = new Swiper('.institutes-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 25,
+                },
+                1280: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                }
+            }
+        });
+
+        // Initialize Swiper for Classes
+        const classesSwiper = new Swiper('.classes-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 25,
+                },
+                1280: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                }
+            }
+        });
+
+        // Initialize Swiper for Testimonials
+        const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 25,
+                }
+            }
+        });
+
+        // Toast Notification Function
+        function showToast(type = 'success', title = 'موفقیت!', message = 'عملیات با موفقیت انجام شد') {
+            const toast = document.getElementById('toast');
+            const toastIcon = toast.querySelector('.toast-icon i');
+            const toastTitle = toast.querySelector('.toast-content h4');
+            const toastMessage = toast.querySelector('.toast-content p');
+
+            toastTitle.textContent = title;
+            toastMessage.textContent = message;
+
+            if (type === 'success') {
+                toastIcon.className = 'fas fa-check-circle';
+                toast.querySelector('.toast-icon').style.background = 'var(--gradient-purple)';
+            } else if (type === 'error') {
+                toastIcon.className = 'fas fa-times-circle';
+                toast.querySelector('.toast-icon').style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
+            } else if (type === 'info') {
+                toastIcon.className = 'fas fa-info-circle';
+                toast.querySelector('.toast-icon').style.background = 'var(--gradient-orange)';
+            }
+
+            toast.classList.add('show');
+
+            setTimeout(function() {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Class Button Click Handler
+        document.querySelectorAll('.class-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const className = this.closest('.class-card').querySelector('h3').textContent;
+                showToast('success', 'موفقیت!', `در حال بارگذاری اطلاعات ${className}...`);
+            });
+        });
+
+        // Institute Button Click Handler
+        document.querySelectorAll('.institute-card button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const instituteName = this.closest('.institute-card').querySelector('.institute-name').textContent;
+                showToast('info', 'اطلاعات', `در حال نمایش اطلاعات ${instituteName}...`);
+            });
+        });
+
+        // Category Card Click Handler
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const categoryName = this.querySelector('h3').textContent;
+                showToast('info', 'جستجو', `در حال جستجو در ${categoryName}...`);
+            });
+        });
+
+        // Feature Card Hover Effect
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Parallax Effect for Hero Section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero-illustration');
+            parallaxElements.forEach(element => {
+                const speed = 0.3;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add active class to nav links based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.style.color = '';
+                    });
+                    if (navLink) {
+                        navLink.style.color = 'var(--primary-purple)';
+                    }
+                }
+            });
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'h' || e.key === 'H') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // Performance optimization: Lazy load images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Add shimmer effect to images on hover
+        document.querySelectorAll('.class-image, .institute-image').forEach(img => {
+            img.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            img.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Pulse animation for CTA buttons
+        setInterval(function() {
+            document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+                btn.style.animation = 'pulse 0.5s';
+                setTimeout(() => {
+                    btn.style.animation = '';
+                }, 500);
+            });
+        }, 5000);
+
+        // Add CSS pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Console Easter Egg
+        console.log('%c🎓 کلاس یار', 'font-size: 30px; color: #6366f1; font-weight: bold;');
+        console.log('%cساخته شده توسط تیم خلاق کلاس یار 💜', 'font-size: 14px; color: #64748b;');
+        console.log('%cحسین لطف‌الله‌پور، محمد اشرفی، شروین محمودیان، مهرداد امینی، متین منهنی، علی جوزی، مهدی هادیان، پوریا هاشمی', 'font-size: 12px; color: #94a3b8;');
+        console.log('%cwww.kelassyar.ir', 'font-size: 14px; color: #f97316; font-weight: bold;');
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn, .class-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple CSS
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            .btn, .class-btn {
+                position: relative;
+                overflow: hidden;
+            }
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple-animation 0.6s ease-out;
+                pointer-events: none;
+            }
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Log initialization
+        console.log('✅ کلاس یار - تمام اسکریپت‌ها با موفقیت بارگذاری شدند!');
+        console.log('🎨 رنگ‌بندی: بنفش (#6366f1) و نارنجی (#f97316)');
+        console.log('📱 Swiper: فعال شده برای آموزشگاه‌ها، کلاس‌ها و نظرات');
+        console.log('✨ کارت‌ها: کوچک‌تر و responsive شدند');
+
+        // Performance monitoring
+        if (window.performance) {
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    const perfData = window.performance.timing;
+                    const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+                    console.log(`⚡ زمان بارگذاری صفحه: ${pageLoadTime}ms`);
+                }, 0);
+            });
+        }
+    </script>
+</body>
+</html>
