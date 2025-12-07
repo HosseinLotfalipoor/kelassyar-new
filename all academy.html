@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزشگاه‌ها | کلاس‌یار - مرجع جامع آموزشگاه‌های نجف‌آباد</title>
+    <meta name="description" content="لیست کامل آموزشگاه‌های نجف‌آباد - جستجو و مقایسه آموزشگاه‌های هنری، ورزشی، زبان و فناوری">
+    
+    <!-- Fonts -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'vazir': ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #3b82f6, #2563eb);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #2563eb, #1d4ed8);
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .animate-slideUp {
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        /* Filter Accordion */
+        .filter-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .filter-content.active {
+            max-height: 400px;
+        }
+        
+        .filter-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .filter-icon.active {
+            transform: rotate(180deg);
+        }
+        
+        /* Card Hover Effect */
+        .institute-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .institute-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        /* Custom Checkbox */
+        .custom-checkbox {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .custom-checkbox:hover {
+            border-color: #3b82f6;
+        }
+        
+        .custom-checkbox:checked {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border-color: #2563eb;
+        }
+        
+        .custom-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* Mobile Filter Overlay */
+        .filter-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+        }
+        
+        /* Pagination Active */
+        .pagination-active {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+        
+        /* Sorting Tab Active */
+        .sort-tab.active {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+        }
+        
+        /* Rating Stars */
+        .star-filled {
+            color: #fbbf24;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-50 min-h-screen">
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                
+                <!-- Logo -->
+                <a href="/" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-primary-500/50 transition-all group-hover:scale-110">
+                        <i class="fas fa-graduation-cap text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-black text-gray-800 group-hover:text-primary-600 transition-colors">کلاس‌یار</h1>
+                        <p class="text-xs text-gray-500">مسیر هوشمند یادگیری</p>
+                    </div>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="/" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">خانه</a>
+                    <a href="#" class="text-primary-600 font-bold">آموزشگاه‌ها</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">کلاس‌ها</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">درباره ما</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">تماس با ما</a>
+                </nav>
+                
+                <!-- Auth Buttons -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="#" class="px-5 py-2.5 text-primary-600 font-semibold hover:bg-primary-50 rounded-xl transition-all">
+                        ورود
+                    </a>
+                    <a href="#" class="px-5 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-primary-500/30 transition-all hover:scale-105">
+                        ثبت‌نام
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:bg-gray-100 rounded-xl transition-colors">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden bg-white border-t border-gray-100">
+            <div class="container mx-auto px-4 py-4">
+                <nav class="space-y-2">
+                    <a href="/" class="block px-4 py-3 rounded-xl hover:bg-gray-50 text-gray-700 font-medium">خانه</a>
+                    <a href="#" class="block px-4 py-3 rounded-xl bg-primary-50 text-primary-600 font-bold">آموزشگاه‌ها</a>
+                    <a href="#" class="block px-4 py-3 rounded-xl hover:bg-gray-50 text-gray-700 font-medium">کلاس‌ها</a>
+                    <a href="#" class="block px-4 py-3 rounded-xl hover:bg-gray-50 text-gray-700 font-medium">درباره ما</a>
+                    <a href="#" class="block px-4 py-3 rounded-xl hover:bg-gray-50 text-gray-700 font-medium">تماس با ما</a>
+                </nav>
+                <div class="flex gap-3 mt-4 pt-4 border-t border-gray-100">
+                    <a href="#" class="flex-1 py-3 text-center text-primary-600 font-semibold border-2 border-primary-600 rounded-xl hover:bg-primary-50 transition-colors">
+                        ورود
+                    </a>
+                    <a href="#" class="flex-1 py-3 text-center bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl">
+                        ثبت‌نام
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== BREADCRUMB ==================== -->
+    <nav class="bg-white border-b border-gray-100 shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <ol class="flex items-center gap-2 text-sm">
+                <li>
+                    <a href="/" class="text-gray-500 hover:text-primary-600 transition-colors flex items-center gap-1">
+                        <i class="fas fa-home"></i>
+                        خانه
+                    </a>
+                </li>
+                <li class="text-gray-400">
+                    <i class="fas fa-chevron-left text-xs"></i>
+                </li>
+                <li class="text-primary-600 font-semibold">
+                    آموزشگاه‌ها
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- ==================== SEARCH BAR ==================== -->
+    <section class="bg-gradient-to-r from-primary-500 to-primary-700 py-8">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-black text-white text-center mb-6">
+                    <i class="fas fa-search ml-2"></i>
+                    جستجوی آموزشگاه
+                </h2>
+                <div class="bg-white rounded-2xl shadow-2xl p-2 flex flex-col md:flex-row gap-2">
+                    <div class="flex-1 relative">
+                        <input 
+                            type="text" 
+                            placeholder="نام آموزشگاه یا کلاس مورد نظر را جستجو کنید..."
+                            class="w-full px-5 py-4 pr-12 rounded-xl border-2 border-gray-200 focus:border-primary-500 focus:outline-none transition-all text-gray-700 font-medium"
+                        >
+                        <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    <button class="px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-primary-500/40 transition-all hover:scale-105 flex items-center justify-center gap-2">
+                        <i class="fas fa-search"></i>
+                        جستجو
+                    </button>
+                </div>
+                
+                <!-- Quick Filters -->
+                <div class="flex flex-wrap gap-2 justify-center mt-4">
+                    <button class="px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-lg hover:bg-white/30 transition-all text-sm font-semibold">
+                        <i class="fas fa-palette ml-1"></i>
+                        هنری
+                    </button>
+                    <button class="px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-lg hover:bg-white/30 transition-all text-sm font-semibold">
+                        <i class="fas fa-running ml-1"></i>
+                        ورزشی
+                    </button>
+                    <button class="px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-lg hover:bg-white/30 transition-all text-sm font-semibold">
+                        <i class="fas fa-language ml-1"></i>
+                        زبان
+                    </button>
+                    <button class="px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-lg hover:bg-white/30 transition-all text-sm font-semibold">
+                        <i class="fas fa-laptop-code ml-1"></i>
+                        فناوری
+                    </button>
+                    <button class="px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-lg hover:bg-white/30 transition-all text-sm font-semibold">
+                        <i class="fas fa-atom ml-1"></i>
+                        علمی
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-6">
+            
+            <!-- ==================== COMPACT SIDEBAR FILTERS ==================== -->
+            <aside class="hidden lg:block w-72 flex-shrink-0">
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden sticky top-24">
+                    
+                    <!-- Filter Header -->
+                    <div class="bg-gradient-to-r from-primary-500 to-primary-600 p-4 text-white">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-lg flex items-center gap-2">
+                                <i class="fas fa-filter"></i>
+                                فیلترها
+                            </h3>
+                            <span class="px-2 py-1 bg-white/20 rounded-lg text-sm font-bold">۱۳</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Filters Content -->
+                    <div class="p-4 space-y-3 max-h-[calc(100vh-200px)] overflow-y-auto">
+                        
+                        <!-- Location Filter -->
+                        <div class="filter-group">
+                            <button class="filter-toggle w-full flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-all">
+                                <span class="flex items-center gap-2 font-semibold text-gray-700 text-sm">
+                                    <i class="fas fa-map-marker-alt text-primary-500"></i>
+                                    موقعیت مکانی
+                                </span>
+                                <i class="fas fa-chevron-down filter-icon text-gray-400 text-xs"></i>
+                            </button>
+                            <div class="filter-content mt-2 space-y-2 pr-2">
+                                <select class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm">
+                                    <option value="">استان</option>
+                                    <option value="isfahan">اصفهان</option>
+                                    <option value="tehran">تهران</option>
+                                </select>
+                                <select class="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm">
+                                    <option value="">شهر</option>
+                                    <option value="najafabad">نجف‌آباد</option>
+                                    <option value="isfahan">اصفهان</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- هنری -->
+                        <div class="filter-group">
+                            <button class="filter-toggle w-full flex items-center justify-between p-3 bg-pink-50 rounded-lg hover:bg-pink-100 transition-all">
+                                <span class="flex items-center gap-2 font-semibold text-gray-700 text-sm">
+                                    <i class="fas fa-palette text-pink-500"></i>
+                                    هنری
+                                </span>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 bg-pink-500 text-white text-xs font-bold rounded">۵</span>
+                                    <i class="fas fa-chevron-down filter-icon text-gray-400 text-xs"></i>
+                                </div>
+                            </button>
+                            <div class="filter-content mt-2 space-y-1 pr-2">
+                                <label class="flex items-center gap-2 p-2 hover:bg-pink-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">هنرهای تجسمی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۸)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-pink-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">هنرهای نمایشی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۵)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-pink-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">موسیقی و صدا</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۱۲)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-pink-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">هنرهای دیجیتال</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۶)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-pink-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">صنایع دستی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۴)</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- ورزشی -->
+                        <div class="filter-group">
+                            <button class="filter-toggle w-full flex items-center justify-between p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-all">
+                                <span class="flex items-center gap-2 font-semibold text-gray-700 text-sm">
+                                    <i class="fas fa-running text-green-500"></i>
+                                    ورزشی
+                                </span>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 bg-green-500 text-white text-xs font-bold rounded">۵</span>
+                                    <i class="fas fa-chevron-down filter-icon text-gray-400 text-xs"></i>
+                                </div>
+                            </button>
+                            <div class="filter-content mt-2 space-y-1 pr-2">
+                                <label class="flex items-center gap-2 p-2 hover:bg-green-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">ورزش‌های فکری</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۳)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-green-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">قدرتی و استقامتی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۹)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-green-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">ورزش‌های رزمی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۷)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-green-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">ورزش‌های آبی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۵)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-green-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">ورزش‌های توپی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۱۱)</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- زبان‌های خارجی -->
+                        <div class="filter-group">
+                            <button class="filter-toggle w-full flex items-center justify-between p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-all">
+                                <span class="flex items-center gap-2 font-semibold text-gray-700 text-sm">
+                                    <i class="fas fa-language text-blue-500"></i>
+                                    زبان‌های خارجی
+                                </span>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 bg-blue-500 text-white text-xs font-bold rounded">۴</span>
+                                    <i class="fas fa-chevron-down filter-icon text-gray-400 text-xs"></i>
+                                </div>
+                            </button>
+                            <div class="filter-content mt-2 space-y-1 pr-2">
+                                <label class="flex items-center gap-2 p-2 hover:bg-blue-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">انگلیسی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۱۵)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-blue-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">فرانسوی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۴)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-blue-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">آلمانی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۳)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-blue-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">چینی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۲)</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- فناوری -->
+                        <div class="filter-group">
+                            <button class="filter-toggle w-full flex items-center justify-between p-3 bg-orange-50 rounded-lg hover:bg-orange-100 transition-all">
+                                <span class="flex items-center gap-2 font-semibold text-gray-700 text-sm">
+                                    <i class="fas fa-laptop-code text-orange-500"></i>
+                                    فناوری
+                                </span>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 bg-orange-500 text-white text-xs font-bold rounded">۴</span>
+                                    <i class="fas fa-chevron-down filter-icon text-gray-400 text-xs"></i>
+                                </div>
+                            </button>
+                            <div class="filter-content mt-2 space-y-1 pr-2">
+                                <label class="flex items-center gap-2 p-2 hover:bg-orange-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">IT و کامپیوتر</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۱۰)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-orange-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">سخت‌افزار</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۴)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-orange-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">شبکه</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۳)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-orange-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">فناوری‌های نوین</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۶)</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- علمی -->
+                        <div class="filter-group">
+                            <button class="filter-toggle w-full flex items-center justify-between p-3 bg-cyan-50 rounded-lg hover:bg-cyan-100 transition-all">
+                                <span class="flex items-center gap-2 font-semibold text-gray-700 text-sm">
+                                    <i class="fas fa-atom text-cyan-500"></i>
+                                    علمی
+                                </span>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 bg-cyan-500 text-white text-xs font-bold rounded">۲</span>
+                                    <i class="fas fa-chevron-down filter-icon text-gray-400 text-xs"></i>
+                                </div>
+                            </button>
+                            <div class="filter-content mt-2 space-y-1 pr-2">
+                                <label class="flex items-center gap-2 p-2 hover:bg-cyan-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">دروس تحصیلی</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۸)</span>
+                                </label>
+                                <label class="flex items-center gap-2 p-2 hover:bg-cyan-50 rounded-lg cursor-pointer text-sm">
+                                    <input type="checkbox" class="custom-checkbox">
+                                    <span class="text-gray-700">نجوم و هوافضا</span>
+                                    <span class="mr-auto text-xs text-gray-400">(۲)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="p-4 border-t border-gray-100 space-y-2">
+                        <button class="w-full py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold rounded-xl hover:shadow-lg transition-all">
+                            <i class="fas fa-check ml-1"></i>
+                            اعمال فیلترها
+                        </button>
+                        <button class="w-full py-3 border-2 border-gray-300 text-gray-600 font-semibold rounded-xl hover:bg-gray-50 transition-all">
+                            <i class="fas fa-redo-alt ml-1"></i>
+                            پاک کردن
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ==================== MAIN CONTENT AREA ==================== -->
+            <div class="flex-1">
+                
+                <!-- Top Bar -->
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 mb-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        
+                        <!-- Results Count & Mobile Filter -->
+                        <div class="flex items-center justify-between md:justify-start gap-4">
+                            <!-- Mobile Filter Button -->
+                            <button id="mobileFilterBtn" class="lg:hidden flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-primary-50 to-blue-50 text-primary-600 font-semibold rounded-xl hover:from-primary-100 hover:to-blue-100 transition-all shadow-md">
+                                <i class="fas fa-filter"></i>
+                                فیلترها
+                            </button>
+                            
+                            <!-- Results Count -->
+                            <div class="flex items-center gap-2 text-gray-700">
+                                <div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-md">
+                                    <i class="fas fa-building text-white"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-2xl text-primary-600">۱۳</span>
+                                    <span class="text-sm mr-1">آموزشگاه</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sorting Tabs -->
+                        <div class="flex items-center gap-2 bg-gray-100 p-1.5 rounded-xl">
+                            <button class="sort-tab active px-4 py-2 rounded-lg text-sm font-bold transition-all">
+                                <i class="fas fa-clock ml-1"></i>
+                                جدیدترین
+                            </button>
+                            <button class="sort-tab px-4 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-white transition-all">
+                                <i class="fas fa-fire ml-1"></i>
+                                محبوب
+                            </button>
+                            <button class="sort-tab px-4 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-white transition-all">
+                                <i class="fas fa-eye ml-1"></i>
+                                پربازدید
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== INSTITUTES GRID ==================== -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+                    
+                    <!-- Institute Card 1 -->
+                    <article class="institute-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group">
+                        <div class="relative">
+                            <img src="https://via.placeholder.com/400x250/3b82f6/ffffff?text=آموزشگاه+موسیقی" alt="آموزشگاه موسیقی نوا" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute top-4 right-4">
+                                <span class="px-3 py-1.5 bg-pink-500 text-white text-xs font-bold rounded-full shadow-lg">
+                                    <i class="fas fa-palette ml-1"></i>
+                                    هنری
+                                </span>
+                            </div>
+                            <div class="absolute top-4 left-4">
+                                <button class="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 hover:scale-110 transition-all shadow-lg">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-700 shadow-md">
+                                    <i class="fas fa-eye text-primary-500 ml-1"></i>
+                                    ۱۲۳۴
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="font-bold text-lg text-gray-800 group-hover:text-primary-600 transition-colors">
+                                    آموزشگاه موسیقی نوا
+                                </h3>
+                                <div class="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg">
+                                    <i class="fas fa-star star-filled text-sm"></i>
+                                    <span class="font-bold text-gray-700 text-sm">۴.۸</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="px-2.5 py-1 bg-pink-50 text-pink-600 text-xs font-semibold rounded-lg">موسیقی</span>
+                                <span class="px-2.5 py-1 bg-purple-50 text-purple-600 text-xs font-semibold rounded-lg">پیانو</span>
+                                <span class="px-2.5 py-1 bg-indigo-50 text-indigo-600 text-xs font-semibold rounded-lg">گیتار</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4 line-clamp-2">
+                                آموزش تخصصی انواع سازهای ایرانی و کلاسیک با اساتید مجرب
+                            </p>
+                            <div class="flex items-center gap-2 text-gray-500 text-sm mb-4 bg-gray-50 p-2 rounded-lg">
+                                <i class="fas fa-map-marker-alt text-primary-500"></i>
+                                <span>نجف‌آباد، خیابان شریعتی</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <a href="#" class="flex-1 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center font-bold rounded-xl hover:shadow-xl hover:shadow-primary-500/30 transition-all hover:scale-105">
+                                    مشاهده
+                                </a>
+                                <a href="tel:03142000000" class="w-12 h-12 border-2 border-green-500 text-green-500 rounded-xl flex items-center justify-center hover:bg-green-500 hover:text-white transition-all hover:scale-110">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Institute Card 2 -->
+                    <article class="institute-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group">
+                        <div class="relative">
+                            <img src="https://via.placeholder.com/400x250/22c55e/ffffff?text=باشگاه+ورزشی" alt="باشگاه ورزشی قهرمانان" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute top-4 right-4">
+                                <span class="px-3 py-1.5 bg-green-500 text-white text-xs font-bold rounded-full shadow-lg">
+                                    <i class="fas fa-running ml-1"></i>
+                                    ورزشی
+                                </span>
+                            </div>
+                            <div class="absolute top-4 left-4">
+                                <button class="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-red-500 hover:scale-110 transition-all shadow-lg">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-700 shadow-md">
+                                    <i class="fas fa-eye text-primary-500 ml-1"></i>
+                                    ۲۱۵۶
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="font-bold text-lg text-gray-800 group-hover:text-primary-600 transition-colors">
+                                    باشگاه ورزشی قهرمانان
+                                </h3>
+                                <div class="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg">
+                                    <i class="fas fa-star star-filled text-sm"></i>
+                                    <span class="font-bold text-gray-700 text-sm">۴.۹</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="px-2.5 py-1 bg-green-50 text-green-600 text-xs font-semibold rounded-lg">بدنسازی</span>
+                                <span class="px-2.5 py-1 bg-teal-50 text-teal-600 text-xs font-semibold rounded-lg">فیتنس</span>
+                                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-600 text-xs font-semibold rounded-lg">ایروبیک</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4 line-clamp-2">
+                                مجهزترین باشگاه ورزشی نجف‌آباد با امکانات پیشرفته
+                            </p>
+                            <div class="flex items-center gap-2 text-gray-500 text-sm mb-4 bg-gray-50 p-2 rounded-lg">
+                                <i class="fas fa-map-marker-alt text-primary-500"></i>
+                                <span>نجف‌آباد، بلوار امام خمینی</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <a href="#" class="flex-1 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center font-bold rounded-xl hover:shadow-xl hover:shadow-primary-500/30 transition-all hover:scale-105">
+                                    مشاهده
+                                </a>
+                                <a href="tel:03142000000" class="w-12 h-12 border-2 border-green-500 text-green-500 rounded-xl flex items-center justify-center hover:bg-green-500 hover:text-white transition-all hover:scale-110">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Institute Card 3 -->
+                    <article class="institute-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group">
+                        <div class="relative">
+                            <img src="https://via.placeholder.com/400x250/6366f1/ffffff?text=آموزشگاه+زبان" alt="آموزشگاه زبان پارسیان" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute top-4 right-4">
+                                <span class="px-3 py-1.5 bg-blue-500 text-white text-xs font-bold rounded-full shadow-lg">
+                                    <i class="fas fa-language ml-1"></i>
+                                    زبان
+                                </span>
+                            </div>
+                            <div class="absolute top-4 left-4">
+                                <button class="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 hover:scale-110 transition-all shadow-lg">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-700 shadow-md">
+                                    <i class="fas fa-eye text-primary-500 ml-1"></i>
+                                    ۱۸۹۰
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="font-bold text-lg text-gray-800 group-hover:text-primary-600 transition-colors">
+                                    آموزشگاه زبان پارسیان
+                                </h3>
+                                <div class="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg">
+                                    <i class="fas fa-star star-filled text-sm"></i>
+                                    <span class="font-bold text-gray-700 text-sm">۴.۷</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="px-2.5 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-lg">انگلیسی</span>
+                                <span class="px-2.5 py-1 bg-indigo-50 text-indigo-600 text-xs font-semibold rounded-lg">آلمانی</span>
+                                <span class="px-2.5 py-1 bg-purple-50 text-purple-600 text-xs font-semibold rounded-lg">فرانسوی</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4 line-clamp-2">
+                                آموزش زبان‌های خارجی با متدهای روز دنیا
+                            </p>
+                            <div class="flex items-center gap-2 text-gray-500 text-sm mb-4 bg-gray-50 p-2 rounded-lg">
+                                <i class="fas fa-map-marker-alt text-primary-500"></i>
+                                <span>نجف‌آباد، میدان آزادی</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <a href="#" class="flex-1 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center font-bold rounded-xl hover:shadow-xl hover:shadow-primary-500/30 transition-all hover:scale-105">
+                                    مشاهده
+                                </a>
+                                <a href="tel:03142000000" class="w-12 h-12 border-2 border-green-500 text-green-500 rounded-xl flex items-center justify-center hover:bg-green-500 hover:text-white transition-all hover:scale-110">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Institute Card 4 -->
+                    <article class="institute-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group">
+                        <div class="relative">
+                            <img src="https://via.placeholder.com/400x250/f97316/ffffff?text=آموزشگاه+کامپیوتر" alt="آموزشگاه فناوری نوین" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute top-4 right-4">
+                                <span class="px-3 py-1.5 bg-orange-500 text-white text-xs font-bold rounded-full shadow-lg">
+                                    <i class="fas fa-laptop-code ml-1"></i>
+                                    فناوری
+                                </span>
+                            </div>
+                            <div class="absolute top-4 left-4">
+                                <button class="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 hover:scale-110 transition-all shadow-lg">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-700 shadow-md">
+                                    <i class="fas fa-eye text-primary-500 ml-1"></i>
+                                    ۱۵۶۷
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="font-bold text-lg text-gray-800 group-hover:text-primary-600 transition-colors">
+                                    آموزشگاه فناوری نوین
+                                </h3>
+                                <div class="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg">
+                                    <i class="fas fa-star star-filled text-sm"></i>
+                                    <span class="font-bold text-gray-700 text-sm">۴.۶</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="px-2.5 py-1 bg-orange-50 text-orange-600 text-xs font-semibold rounded-lg">برنامه‌نویسی</span>
+                                <span class="px-2.5 py-1 bg-red-50 text-red-600 text-xs font-semibold rounded-lg">طراحی سایت</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4 line-clamp-2">
+                                آموزش برنامه‌نویسی و طراحی سایت با جدیدترین تکنولوژی‌ها
+                            </p>
+                            <div class="flex items-center gap-2 text-gray-500 text-sm mb-4 bg-gray-50 p-2 rounded-lg">
+                                <i class="fas fa-map-marker-alt text-primary-500"></i>
+                                <span>نجف‌آباد، خیابان مطهری</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <a href="#" class="flex-1 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center font-bold rounded-xl hover:shadow-xl hover:shadow-primary-500/30 transition-all hover:scale-105">
+                                    مشاهده
+                                </a>
+                                <a href="tel:03142000000" class="w-12 h-12 border-2 border-green-500 text-green-500 rounded-xl flex items-center justify-center hover:bg-green-500 hover:text-white transition-all hover:scale-110">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Institute Card 5 -->
+                    <article class="institute-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group">
+                        <div class="relative">
+                            <img src="https://via.placeholder.com/400x250/ec4899/ffffff?text=آموزشگاه+نقاشی" alt="آموزشگاه هنرهای تجسمی رنگین" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute top-4 right-4">
+                                <span class="px-3 py-1.5 bg-pink-500 text-white text-xs font-bold rounded-full shadow-lg">
+                                    <i class="fas fa-palette ml-1"></i>
+                                    هنری
+                                </span>
+                            </div>
+                            <div class="absolute top-4 left-4">
+                                <button class="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 hover:scale-110 transition-all shadow-lg">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-700 shadow-md">
+                                    <i class="fas fa-eye text-primary-500 ml-1"></i>
+                                    ۹۸۷
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="font-bold text-lg text-gray-800 group-hover:text-primary-600 transition-colors">
+                                    آموزشگاه هنرهای تجسمی رنگین
+                                </h3>
+                                <div class="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg">
+                                    <i class="fas fa-star star-filled text-sm"></i>
+                                    <span class="font-bold text-gray-700 text-sm">۴.۵</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="px-2.5 py-1 bg-pink-50 text-pink-600 text-xs font-semibold rounded-lg">نقاشی</span>
+                                <span class="px-2.5 py-1 bg-rose-50 text-rose-600 text-xs font-semibold rounded-lg">طراحی</span>
+                                <span class="px-2.5 py-1 bg-fuchsia-50 text-fuchsia-600 text-xs font-semibold rounded-lg">خوشنویسی</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4 line-clamp-2">
+                                آموزش نقاشی و طراحی برای تمامی سنین
+                            </p>
+                            <div class="flex items-center gap-2 text-gray-500 text-sm mb-4 bg-gray-50 p-2 rounded-lg">
+                                <i class="fas fa-map-marker-alt text-primary-500"></i>
+                                <span>نجف‌آباد، خیابان فردوسی</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <a href="#" class="flex-1 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center font-bold rounded-xl hover:shadow-xl hover:shadow-primary-500/30 transition-all hover:scale-105">
+                                    مشاهده
+                                </a>
+                                <a href="tel:03142000000" class="w-12 h-12 border-2 border-green-500 text-green-500 rounded-xl flex items-center justify-center hover:bg-green-500 hover:text-white transition-all hover:scale-110">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Institute Card 6 -->
+                    <article class="institute-card bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group">
+                        <div class="relative">
+                            <img src="https://via.placeholder.com/400x250/06b6d4/ffffff?text=آموزشگاه+علمی" alt="آموزشگاه علوم نوین" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute top-4 right-4">
+                                <span class="px-3 py-1.5 bg-cyan-500 text-white text-xs font-bold rounded-full shadow-lg">
+                                    <i class="fas fa-atom ml-1"></i>
+                                    علمی
+                                </span>
+                            </div>
+                            <div class="absolute top-4 left-4">
+                                <button class="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 hover:scale-110 transition-all shadow-lg">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-700 shadow-md">
+                                    <i class="fas fa-eye text-primary-500 ml-1"></i>
+                                    ۱۳۴۵
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="font-bold text-lg text-gray-800 group-hover:text-primary-600 transition-colors">
+                                    آموزشگاه علوم نوین
+                                </h3>
+                                <div class="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg">
+                                    <i class="fas fa-star star-filled text-sm"></i>
+                                    <span class="font-bold text-gray-700 text-sm">۴.۴</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="px-2.5 py-1 bg-cyan-50 text-cyan-600 text-xs font-semibold rounded-lg">ریاضی</span>
+                                <span class="px-2.5 py-1 bg-sky-50 text-sky-600 text-xs font-semibold rounded-lg">فیزیک</span>
+                                <span class="px-2.5 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-lg">نجوم</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4 line-clamp-2">
+                                آموزش دروس تحصیلی با روش‌های نوین
+                            </p>
+                            <div class="flex items-center gap-2 text-gray-500 text-sm mb-4 bg-gray-50 p-2 rounded-lg">
+                                <i class="fas fa-map-marker-alt text-primary-500"></i>
+                                <span>نجف‌آباد، خیابان سعدی</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <a href="#" class="flex-1 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center font-bold rounded-xl hover:shadow-xl hover:shadow-primary-500/30 transition-all hover:scale-105">
+                                    مشاهده
+                                </a>
+                                <a href="tel:03142000000" class="w-12 h-12 border-2 border-green-500 text-green-500 rounded-xl flex items-center justify-center hover:bg-green-500 hover:text-white transition-all hover:scale-110">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Add more cards (7-13) following the same pattern... -->
+                    
+                </div>
+
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ==================== MOBILE FILTER MODAL ==================== -->
+    <div id="mobileFilterModal" class="fixed inset-0 z-50 hidden">
+        <div class="filter-overlay absolute inset-0" id="filterOverlay"></div>
+        <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-2xl max-h-[85vh] overflow-hidden animate-slideUp">
+            <div class="flex items-center justify-between p-5 border-b border-gray-100 bg-gradient-to-r from-primary-50 to-blue-50">
+                <h3 class="text-xl font-black text-gray-800 flex items-center gap-3">
+                    <i class="fas fa-filter text-primary-600"></i>
+                    فیلترهای جستجو
+                </h3>
+                <button id="closeMobileFilter" class="w-10 h-10 flex items-center justify-center text-gray-400 hover:bg-gray-100 rounded-xl transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-5 space-y-3 overflow-y-auto max-h-[calc(85vh-140px)]">
+                <!-- Copy the same filter structure from desktop sidebar -->
+                <p class="text-gray-500 text-center py-8">محتوای فیلترها (مشابه نسخه دسکتاپ)</p>
+            </div>
+            <div class="p-5 border-t border-gray-100 bg-gray-50 flex gap-3">
+                <button class="flex-1 py-3 border-2 border-gray-300 text-gray-600 font-bold rounded-xl hover:bg-gray-100 transition-all">
+                    پاک کردن
+                </button>
+                <button class="flex-1 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold rounded-xl hover:shadow-lg transition-all">
+                    اعمال
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white mt-20">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black">کلاس‌یار</h3>
+                            <p class="text-xs text-gray-400">مسیر هوشمند یادگیری</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        جامع‌ترین مرجع معرفی آموزشگاه‌ها و کلاس‌های آموزشی در نجف‌آباد
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary-500 rounded-xl flex items-center justify-center transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary-500 rounded-xl flex items-center justify-center transition-all">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary-500 rounded-xl flex items-center justify-center transition-all">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">دسترسی سریع</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">درباره ما</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">تماس با ما</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">قوانین</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">حریم خصوصی</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">دسته‌بندی‌ها</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">آموزشگاه‌های هنری</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">آموزشگاه‌های ورزشی</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">آموزشگاه‌های زبان</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">آموزشگاه‌های فناوری</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">تماس با ما</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-primary-500 mt-1"></i>
+                            <span class="text-sm text-gray-400">نجف‌آباد، خیابان شریعتی</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-phone text-primary-500 mt-1"></i>
+                            <a href="tel:03142000000" class="text-sm text-gray-400 hover:text-white transition-colors">031-42000000</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope text-primary-500 mt-1"></i>
+                            <a href="mailto:info@kelassyar.ir" class="text-sm text-gray-400 hover:text-white transition-colors">info@kelassyar.ir</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p class="text-gray-400 text-sm">© ۱۴۰۴ کلاس‌یار. تمامی حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Filter Accordion
+        const filterToggles = document.querySelectorAll('.filter-toggle');
+        filterToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const filterGroup = this.closest('.filter-group');
+                const filterContent = filterGroup.querySelector('.filter-content');
+                const filterIcon = this.querySelector('.filter-icon');
+                
+                // Close all other filters
+                filterToggles.forEach(otherToggle => {
+                    if (otherToggle !== this) {
+                        const otherGroup = otherToggle.closest('.filter-group');
+                        const otherContent = otherGroup.querySelector('.filter-content');
+                        const otherIcon = otherToggle.querySelector('.filter-icon');
+                        otherContent.classList.remove('active');
+                        otherIcon.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current filter
+                filterContent.classList.toggle('active');
+                filterIcon.classList.toggle('active');
+            });
+        });
+
+        // Mobile Filter Modal
+        const mobileFilterBtn = document.getElementById('mobileFilterBtn');
+        const mobileFilterModal = document.getElementById('mobileFilterModal');
+        const closeMobileFilter = document.getElementById('closeMobileFilter');
+        const filterOverlay = document.getElementById('filterOverlay');
+        
+        if (mobileFilterBtn) {
+            mobileFilterBtn.addEventListener('click', () => {
+                mobileFilterModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        if (closeMobileFilter) {
+            closeMobileFilter.addEventListener('click', () => {
+                mobileFilterModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        }
+        if (filterOverlay) {
+            filterOverlay.addEventListener('click', () => {
+                mobileFilterModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        // Sorting Tabs
+        const sortTabs = document.querySelectorAll('.sort-tab');
+        sortTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                sortTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Smooth Scroll
+        window.addEventListener('load', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
