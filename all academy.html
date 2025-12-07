@@ -973,73 +973,182 @@
     </div>
 
     <!-- ==================== FOOTER ==================== -->
-    <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white mt-20">
-        <div class="container mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg">
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 lg:px-8">
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Footer Column 1 - Logo & Description -->
+                <div class="lg:col-span-1">
+                    <a href="#" class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center">
                             <i class="fas fa-graduation-cap text-white text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-black">کلاس‌یار</h3>
-                            <p class="text-xs text-gray-400">مسیر هوشمند یادگیری</p>
+                            <span class="text-2xl font-black">کلاس‌یار</span>
+                            <span class="block text-xs text-gray-400">مرجع کلاس‌های آموزشی</span>
                         </div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        جامع‌ترین مرجع معرفی آموزشگاه‌ها و کلاس‌های آموزشی در نجف‌آباد
+                    </a>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        یافتن کلاس مناسب شما در چند لحظه! با سایت کِلاس‌یار، کلاس‌های مورد نظر خود را به آسانی پیدا کنید.
                     </p>
+                    
+                    <!-- Social Media -->
                     <div class="flex gap-3">
-                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary-500 rounded-xl flex items-center justify-center transition-all">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary-500 rounded-xl flex items-center justify-center transition-all">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-telegram"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary-500 rounded-xl flex items-center justify-center transition-all">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-twitter"></i>
                         </a>
                     </div>
                 </div>
+                
+                <!-- Footer Column 2 - Quick Links -->
                 <div>
-                    <h4 class="font-bold text-lg mb-4">دسترسی سریع</h4>
+                    <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-link text-primary-500"></i>
+                        دسترسی سریع
+                    </h3>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">درباره ما</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">تماس با ما</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">قوانین</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">حریم خصوصی</a></li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-chevron-left text-xs"></i>
+                                خانه
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-chevron-left text-xs"></i>
+                                آموزشگاه‌ها
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-chevron-left text-xs"></i>
+                                کلاس‌ها
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-chevron-left text-xs"></i>
+                                وبلاگ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-chevron-left text-xs"></i>
+                                تماس با ما
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-chevron-left text-xs"></i>
+                                درباره ما
+                            </a>
+                        </li>
                     </ul>
                 </div>
+                
+                <!-- Footer Column 3 - Categories -->
                 <div>
-                    <h4 class="font-bold text-lg mb-4">دسته‌بندی‌ها</h4>
+                    <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-th-large text-primary-500"></i>
+                        دسته‌بندی‌ها
+                    </h3>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">آموزشگاه‌های هنری</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">آموزشگاه‌های ورزشی</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">آموزشگاه‌های زبان</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">آموزشگاه‌های فناوری</a></li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-palette text-pink-500 text-xs"></i>
+                                هنری
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-dumbbell text-green-500 text-xs"></i>
+                                ورزشی
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-language text-blue-500 text-xs"></i>
+                                زبان‌های خارجی
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-laptop-code text-purple-500 text-xs"></i>
+                                فناوری
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors flex items-center gap-2">
+                                <i class="fas fa-flask text-yellow-500 text-xs"></i>
+                                علمی
+                            </a>
+                        </li>
                     </ul>
                 </div>
+                
+                <!-- Footer Column 4 - Contact Info -->
                 <div>
-                    <h4 class="font-bold text-lg mb-4">تماس با ما</h4>
+                    <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-phone text-primary-500"></i>
+                        تماس با ما
+                    </h3>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
                             <i class="fas fa-map-marker-alt text-primary-500 mt-1"></i>
-                            <span class="text-sm text-gray-400">نجف‌آباد، خیابان شریعتی</span>
+                            <span class="text-gray-400">
+                                نجف‌آباد، خیابان امام خمینی
+                            </span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone text-primary-500"></i>
+                            <a href="tel:03142222222" class="text-gray-400 hover:text-primary-500 transition-colors" dir="ltr">
+                                031-4222-2222
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-primary-500"></i>
+                            <a href="mailto:info@kelassyar.ir" class="text-gray-400 hover:text-primary-500 transition-colors">
+                                info@kelassyar.ir
+                            </a>
                         </li>
                         <li class="flex items-start gap-3">
-                            <i class="fas fa-phone text-primary-500 mt-1"></i>
-                            <a href="tel:03142000000" class="text-sm text-gray-400 hover:text-white transition-colors">031-42000000</a>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-envelope text-primary-500 mt-1"></i>
-                            <a href="mailto:info@kelassyar.ir" class="text-sm text-gray-400 hover:text-white transition-colors">info@kelassyar.ir</a>
+                            <i class="fas fa-clock text-primary-500 mt-1"></i>
+                            <div class="text-gray-400">
+                                <p>شنبه تا پنج‌شنبه</p>
+                                <p class="text-sm">۸ صبح تا ۸ شب</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
+                
             </div>
-            <div class="border-t border-gray-700 pt-8 text-center">
-                <p class="text-gray-400 text-sm">© ۱۴۰۴ کلاس‌یار. تمامی حقوق محفوظ است.</p>
+            
+            <!-- Footer Bottom -->
+            <div class="pt-8 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p class="text-gray-400 text-sm text-center md:text-right">
+                        © ۱۴۰۳ کلاس‌یار. تمامی حقوق محفوظ است.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
+                        <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">قوانین و مقررات</a>
+                        <span class="text-gray-700">|</span>
+                        <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">حریم خصوصی</a>
+                        <span class="text-gray-700">|</span>
+                        <a href="#" class="text-gray-400 hover:text-primary-500 transition-colors">سوالات متداول</a>
+                    </div>
+                </div>
             </div>
+            
         </div>
     </footer>
 
